@@ -1,0 +1,10 @@
+SELECT * FROM albums;
+SELECT * FROM albums WHERE title LIKE '%Great%';
+SELECT count(*) FROM albums;
+DELETE FROM albums WHERE title LIKE '%music%';
+SELECT title FROM albums LEFT JOIN artists ON albums.artistid = artists.artistid WHERE artists.name LIKE '%AC/DC%';
+SELECT albums.title, tracks.name FROM albums LEFT JOIN artists ON albums.artistid = artists.artistid LEFT JOIN tracks ON albums.albumid = tracks.albumid WHERE artists.name LIKE '%AC/DC%';
+SELECT albums.title, tracks.name FROM albums LEFT JOIN artists ON albums.artistid = artists.artistid LEFT JOIN tracks ON albums.albumid = tracks.albumid WHERE artists.name LIKE '%AC/DC%' AND albums.title LIKE 'Let There Be Rock';
+SELECT sum(tracks.milliseconds)/60000.0, sum(tracks.unitprice) FROM albums LEFT JOIN artists ON albums.artistid = artists.artistid LEFT JOIN tracks ON albums.albumid = tracks.albumid WHERE artists.name LIKE '%AC/DC%' AND albums.title LIKE 'Let There Be Rock';
+SELECT artists.name, albums.title, sum(tracks.unitprice) FROM albums LEFT JOIN artists ON albums.artistid = artists.artistid LEFT JOIN tracks ON albums.albumid = tracks.albumid WHERE artists.name LIKE '%Deep Purple%';
+SELECT artists.name, albums.title, tracks.name FROM albums LEFT JOIN artists ON albums.artistid = artists.artistid LEFT JOIN tracks ON albums.albumid = tracks.albumid WHERE artists.name LIKE '%R.E.M.%';
