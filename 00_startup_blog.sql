@@ -4,7 +4,8 @@ CREATE TABLE `article`
   `user_id` int,
   `name` varchar(255),
   `created_at` date,
-  `updated_at` date
+  `updated_at` date,
+  FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 );
 
 CREATE TABLE `users`
@@ -31,12 +32,7 @@ CREATE TABLE `category`
   `created_at` date,
   `updated_at` date,
   `article_id` int,
-  `tag_id` int
+  `tag_id` int,
+  FOREIGN KEY (`article_id`) REFERENCES `article` (`id`),
+  FOREIGN KEY (`tag_id`) REFERENCES `tag` (`id`)
 );
-
-ALTER TABLE `article` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
-ALTER TABLE `category` ADD FOREIGN KEY (`article_id`) REFERENCES `article` (`id`);
-
-ALTER TABLE `category` ADD FOREIGN KEY (`tag_id`) REFERENCES `tag` (`id`);
-
